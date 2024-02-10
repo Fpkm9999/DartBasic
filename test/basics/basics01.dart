@@ -15,7 +15,7 @@ void main() {
   /*
   ERROR : 이미 위에서 선언한 동일한 변수를 선언할 수 없다.
   The name 'name' is already defined. (Documentation)
-  The first definition of this name (varTest.dart:3).
+  The first definition of this name (basics01.dart:3).
    Try renaming one of the declarations.
    */
 
@@ -79,7 +79,6 @@ void main() {
   // 이럴 때는 var 사용하는게 좋음.
   // 왠만하면 타입을 명시해주는게 좋음
 
-
   print(name2 + name3); // 글자 사이에 + 연산자만 올 수 있다.
   print(name2 + ' ' + name3);
 
@@ -123,7 +122,7 @@ void main() {
 
   // 반대로 절대로 null 이 아니라고 해주는 것은 !
   String? name8 = '코드팩토리';
-  print(name8!);  // 느낌표를 넣으면 해당 변수는 절대 null 이 아니라는 의미
+  print(name8!); // 느낌표를 넣으면 해당 변수는 절대 null 이 아니라는 의미
   // nullable 변수에 !를 붙이면 현재 이 변수는 null 이 아니라는 의미가 됨
 
   // final, const
@@ -142,19 +141,151 @@ void main() {
   const name12 = '갤럭시S24';
   print(name12);
 
-
   // final, const의 차이를 알기 전에 DateTime을 알아야함
 
+  DateTime now = DateTime.now();
+  print(now); // Run을 하고 DateTime.now() 코드가 실행될 때의 시간이 저장됨
 
+  final DateTime now2 = DateTime.now(); // final 은 됨
+  print(now2);
 
-  var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
-  var image = {
-    'tags': ['saturn'],
-    'url': '//path/to/saturn.jpg'
+  // const DateTime now3 = DateTime.now(); // const 는 오류
+  // const 타입의 경우 빌드 타임의 값을 알고 있어야 함
+  // 반대로 final 의  경우 빌드 타임의 값을 알고 있지 않아도 된다.
+
+  // Operator
+  int number9 = 2;
+
+  print(number9);
+  print(number9 + 2);
+  print(number9 - 2);
+  print(number9 * 2);
+  print(number9 / 2);
+
+  print('------------------');
+  print(number9 % 2);
+  print(number9 % 3);
+
+  print(number9);
+  print('------------------');
+  number9++; // number9 ++을 하고 출력 하니까 1이 더해짐
+
+  print(number9);
+
+  number9--;
+  print(number9);
+
+  double number10 = 4.0;
+  print(number10);
+
+  number10 += 1;
+  print(number10);
+  number10 -= 1;
+  print(number10);
+
+  number10 *= 2;
+  print(number10);
+  number10 /= 2;
+  print(number10);
+
+  // null
+  double? number11 = 4.0;
+  print(number11);
+
+  number11 = 2.0;
+  print(number11);
+
+  number11 = null;
+
+  print(number11);
+
+  number11 ??= 3.0; // ?? : 해당 변수가 `null`이면 오른쪽 값으로 바꿔라라는 뜻
+  print(number11);
+
+  print('------------');
+  int number12 = 1;
+  int number13 = 2;
+
+  print(number12 > number13);
+  print(number12 < number13);
+  print(number12 >= number13);
+  print(number12 <= number13);
+  print(number12 == number13);
+  print(number12 != number13);
+
+  int number14 = 1;
+
+  print(number14 is int);
+  print(number14 is String);
+
+  print(number14 is! int); // !믐 not
+  print(number14 is! String);
+
+  // && - and 조건
+  // || - or 조건
+
+  bool result = 12 > 10 && 1 > 0;
+  print(result);
+  bool result2 = 12 >10 && 0 >1;
+  print(result2);
+
+  bool result3 = 12 > 10 || 1 > 0;
+
+  print(result3);
+
+  bool result4 = 12 > 10 || 0 > 1;
+
+  print(result4);
+
+  bool result5 = 12 < 10 || 0 > 1;
+
+  print(result5);
+
+  // 컬렉션
+  // List
+  // 리스트
+  List<String> blackPink = ['제니','지수','로제','리사'];
+  List<int> numbers = [1,2,3,4,5];
+  print(blackPink);
+  print(numbers);
+
+  // 원하는 값 가져오기
+  // index
+  // 순서
+  // 0부터 시작
+  print(blackPink[0]);
+  print(blackPink[1]);
+  print(blackPink[2]);
+  print(blackPink[3]);
+  // print(blackPink[4]); // Invalid value: Not in inclusive range 0..3: 4
+
+  print(blackPink.length);
+  print(blackPink.runtimeType);
+  blackPink.add('코드팩토리');
+  print(blackPink);
+  blackPink.remove('코드팩토리');
+  print(blackPink);
+  print(blackPink.indexOf('로제'));
+
+  // Map
+  // Key / Value
+  Map<String, String> dictionary = {
+    'Harry Potter' : '해리포터',  // Key, Value
+    'Ron Weasley' : '론 위즐리',
+    'Hermione Granger' : '헤르미온느 그레인저',
   };
-  // 변수 출력
-  print(flybyObjects);
-  print(image);
+  print(dictionary);
+
+  Map<String,bool> isHarryPotter = {
+    'Harry Potter' : true,
+    'Ron Weasley' : true,
+    'Ironman' : false,
+  };
+  print(isHarryPotter);
+  isHarryPotter.addAll({
+    'Spiderman' : false,
+  });
+  print(isHarryPotter);
 
 
 
