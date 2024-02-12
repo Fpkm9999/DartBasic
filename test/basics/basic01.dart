@@ -15,7 +15,7 @@ void main() {
   /*
   ERROR : 이미 위에서 선언한 동일한 변수를 선언할 수 없다.
   The name 'name' is already defined. (Documentation)
-  The first definition of this name (basics01.dart:3).
+  The first definition of this name (basic01.dart:3).
    Try renaming one of the declarations.
    */
 
@@ -72,7 +72,7 @@ void main() {
   print(name4.runtimeType); // String
   print(number8.runtimeType); // int
 
-  // 실제로var 라는 타입은 존재하지 않음
+  // 실제로 var 라는 타입은 존재하지 않음
 
   Map<String, Map<int, List<double>>> testType = {};
   var testType1 = {}; // 위 코드와 동일하다.
@@ -103,7 +103,7 @@ void main() {
 
   name5 = 2; // 다이나믹은 추후 타입변환됨  // 타입변환이 자유로움
   // strVar1 = 5; var타입은 한번 선언하면 선언한 타입으로 고정된다.
-  name5 = 5; // 가능
+  name5 = 5; // 가능 var 타입은 못함
   print(name5);
 
   print(name5.runtimeType); // int
@@ -214,7 +214,7 @@ void main() {
   print(number12 != number13);
 
   int number14 = 1;
-
+  print('111');
   print(number14 is int);
   print(number14 is String);
 
@@ -265,7 +265,7 @@ void main() {
   print(blackPink);
   blackPink.remove('코드팩토리');
   print(blackPink);
-  print(blackPink.indexOf('로제'));
+  print(blackPink.indexOf('로제')); // 2
 
   // Map
   // Key / Value
@@ -282,10 +282,45 @@ void main() {
     'Ironman' : false,
   };
   print(isHarryPotter);
+
   isHarryPotter.addAll({
     'Spiderman' : false,
   });
   print(isHarryPotter);
+
+  print(isHarryPotter['Ironman']);  // 원하는 Key 값을 입력해 value 반환
+
+  isHarryPotter['Hulk'] = false; // 이런식으로도 추가가 가능함.
+  print(isHarryPotter);
+
+  isHarryPotter['Spiderman'] = true;
+  print(isHarryPotter);
+
+  // 삭제 하는 법
+  print(isHarryPotter);
+  isHarryPotter.remove('Harry Potter');
+  print(isHarryPotter);
+
+  print(isHarryPotter.keys);  // 키만 가져오기
+  print(isHarryPotter.values); // 값만 가져오기
+
+  // Set - 중복 처리
+  final Set<String> names5 = {
+    'Code Factory',
+    'Flutter',
+    'Black Pink',
+    'Flutter',
+  };
+  print(names5);
+  print('112');
+  names5.add('Jenny');
+  print(names5);
+
+  names5.remove('Jenny');
+  print(names5);
+
+  print(names5.contains('Flutter'));  // true
+
 
 
 
