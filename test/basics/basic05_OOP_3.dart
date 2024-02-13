@@ -1,3 +1,4 @@
+// ignore: slash_for_doc_comments
 /**
  * ===========================================================
  * fileName       : basic05_OOP_3
@@ -37,7 +38,7 @@ void main() {
     '블랙핑크',
     ['지수', '제니', ' 리사 ', ' 로제 '],
   );
-  print(blackPink3 == blackPink4);
+  print(blackPink3 == blackPink4);  // true
 
   Idol bts2 = Idol.fromList([
     ['RM', '진', '슈가', ' 제이홉', ' 지민 ', ' 뷔 ', ' 정국'],

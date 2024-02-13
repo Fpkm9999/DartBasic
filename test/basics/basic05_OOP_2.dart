@@ -1,3 +1,4 @@
+// ignore: slash_for_doc_comments
 /**
  * ===========================================================
  * fileName       : basic05_2_OOP
@@ -50,7 +51,8 @@ class Idol {
   List<String> members;
 
   // case1. 기본 constructor
-  Idol(this.name, this.members); // 간결해진 생성자. 바로 this를 사용해도 가능함 // 여기까지가 포지셔널 파라미터
+  Idol(this.name, this.members); // 간결해진 생성자. 바로 this를 사용해도 가능함
+  // 여기까지가 포지셔널 파라미터
 
   // case2. Named constructor
   Idol.fromList(List values)

@@ -12,7 +12,6 @@ import '../TypedefTest.dart';
 // 함수
 void main() {
   addNumbers(10, 20, 30);
-
   addNumbers(20, 30, 40);
 
   addNumbersOptional(10);
@@ -64,7 +63,7 @@ void main() {
 // parameter / argument - 매개변수
 // positional parameter - 순서가 중요한 파라미터 (순서가 틀리면 안됨)
 // optional parameter - 있어도 되고 없어도 되는 파라미터
-addNumbers(int x, int y, int z) {
+addNumbers(int x, int y, int z) { //  Required parameter // 가장 익숙한 파라미터
   // print('addNumbers 실행');
   // int x = 10;
   // int y = 20;
@@ -81,10 +80,13 @@ addNumbers(int x, int y, int z) {
     print('홀수입니다.');
   }
 }
+// Flutter에서 눈여겨 봐야할 파라미터가 optional parameter, named parameter 로 나뉜다.
 
-// optional parameter - 있어도 되고 없어도 되는 파라미터
+// optional positional  parameter - 있어도 되고 없어도 되는 파라미터
+// []안에 감싸져 있는 파라미터로 포지셔널 파라미터 라고 한다.
+// 위치가 중요한 파라미터로 순서를 잘 지켜 작성해야 한다.
 
-addNumbersOptional(int x, [int y = 20, int z = 30]) {
+addNumbersOptional(int x, [int y=20 , int z = 30]) {
   int sum = x + y + z;
 
   print('x : $x');
@@ -97,7 +99,13 @@ addNumbersOptional(int x, [int y = 20, int z = 30]) {
   }
 }
 
-// named parameter - 이름이 있는 파라미터 (순서가 중요하지 않다.)
+//  named parameter - 이름이 있는 파라미터 (순서가 중요하지 않다.)
+// 컬리브라켓 {} 으로 감싸져 있다.
+// 컬리 브라켓 안에 있는 값은 옵셔널이다.
+// 값을 할당하려면 콜론(:)을 꼭 붙여야 한다.
+// 컬리 브라켓 안에 있는 파라미터의 순서는 상관이 없다.
+// 함수에 많은 파라미터를 넘겨줄 때 혼란을 피할 수 있다.
+// 함수 작성시에 순서보라는 파라미터의 이름을 참조하기 때문에 좀 더 유연한 편이다.
 addNumbersNamed({
   required int x,
   required int y,
