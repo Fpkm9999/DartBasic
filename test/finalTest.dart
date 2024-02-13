@@ -10,7 +10,7 @@ void main() {
   // name2 = '코드팩토리'; // const도 마찬가지다.
 
   // todo final, const에서 변수 타입생략
-  // 타입을 지우면 된다.
+  // 타입을 지우면 된다.a
   // final name = '코드 팩토리';
   print(name);
 

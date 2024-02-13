@@ -98,7 +98,7 @@
 ///   선언과 동시에 초기화 - 기본 값을 주기
 void main() {
   // 변수
-  // 타입 추론(Type inference) 방식으로 정의) : 누가봐도 이 타입이 될 때
+  // 타입 추론(Type inference) 방식으로 정의) : 누가 봐도 이 타입이 될 때
   var varInteger1 = 0;
 
   // 타입 애노테이션(Type annotation) 방식으로 정의 - 추천
@@ -106,7 +106,7 @@ void main() {
 
   // 상수
   // 런타임 상수 - 타입 추론 방식으로 정의
-  final runTimeConstant1 = 0;
+  final runTimeConstant1 = 0; // int로 타입 추론이 됨
   // 런타임 상수 - 타입 애노테이션 방식으로 정의
   final int runTimeConstant2 = 0;
 
