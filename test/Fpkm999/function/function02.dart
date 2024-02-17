@@ -1,10 +1,8 @@
-/**
- * ===========================================================
- * fileName       : function02
- * date           : 2024-02-03
- * description    :
- * ===========================================================
- */
+/// ===========================================================
+/// fileName       : function02
+/// date           : 2024-02-03
+/// description    :
+/// ===========================================================
 
 void some1(var a){  // dynamic 타입이 됨
   a = 20;
@@ -12,20 +10,26 @@ void some1(var a){  // dynamic 타입이 됨
   a = true;
   a = null;
 }
-void some2(a) { // dynamic 타입
+void some2(a) { // dynamic 타입 ==> 어떤 타입의 값이든 해당 매개변수로 전달 될 수 있게됨
   a = 20;
   a = 'world';
   a = true;
   a = null;
-  // 매개변수의 타입을 생략하면 var 로 선언한 것과 같다 => dynamic 타입임
+  // 매개변수의 타입을 생략 하면 var 로 선언한 것과 같다 => dynamic 타입임
 
-  //void 의 경우 반환타입이 없는 경우도 dynamic 타입이 된다.
+  //void 의 경우 반환 타입이 없는 경우도 dynamic 타입이 된다.
+
+  // 매개변수의 타입을 생략 시
+  int some3(a){ // Type: dynamic
+    return a;
+  }
 }
 
 void printUser1(){
   print('hello world');
 }
 void printUser2() => print('hello world'); // 화살표 함수
+
 void main(){
   // some1();  // 매개변수에 값을 전달하지 않아서 오류
   some1(10);
