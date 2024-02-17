@@ -1,10 +1,8 @@
-/**
- * ===========================================================
- * fileName       : basic05_oop_6inheritance
- * date           : 2024-02-16
- * description    :
- * ===========================================================
- */
+/// ===========================================================
+/// fileName       : basic05_oop_6inheritance(상속)
+/// date           : 2024-02-16
+/// description    :
+/// ===========================================================
 void main() {
   print('---------Idol-------------');
   Idol apink = Idol(name: '에이핑크', membersCount: 5);
@@ -24,6 +22,7 @@ void main() {
   redVelvet.sayMembersCount();
   redVelvet.sayName();
   redVelvet.sayFemale();
+
 }
 
 // 상속 - inheritance

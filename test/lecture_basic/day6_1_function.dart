@@ -91,7 +91,7 @@ void fn(
   // Object 타입 : 최상위 타입
   // dynamic과의 차이 : dynamic은 타입이 무엇인지 모르는 상태 => 컴파일러가 타입 체크 안함
   //                   Object는 최상위 타입으로 바꿔놓은 것 뿐임 => 컴파일러가 타입 체크함
-  Object objectVar = 10;
+  Object objectVar = 10; // 최상위 타입
   objectVar = "10";
   // 타입을 체크하기때문에 dynamic처럼 함수 존재 여부 기능은 사용 불가
   // if(objectVar.length) {
