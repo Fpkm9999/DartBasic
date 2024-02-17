@@ -200,6 +200,7 @@ void main() {
   //
   // ====> 각 위치의 규칙 유추하기
   // 정수를 나선형으로 배치하기 : https://school.programmers.co.kr/learn/courses/30/lessons/181832
+
   // 2차원 배열
   const int row = 5;
   const int column = 5;
