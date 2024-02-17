@@ -12,25 +12,28 @@
 enum Colors {
   Red(value: 0xFF0000),
   Green(value: 0x00FF00),
-  Blue(value: 0x0000FF);
+  Blue(value: 0x0000FF),
+  Orange(value: 0x0000FF);
 
   // 클래스이기 때문에 생성자를 가짐
   // 상수형 생성자만 가능
-  const Colors({required this.value})
-      : this.min = 0,
-        this.max = 255;
+  const Colors({
+    required this.value
+  }): this.min = 0,
+      this.max = 255;
 
   final int min;
   final int max;
   final int value;
 
   // 확장형, 주어진 색상 값이 현재 색상 값과 같은지 검사
-  bool isSame(int value) => this.value == value;
+  bool isSame(int value) =>
+    this.value == value;
 
-  // 전통적인 switch 문
   void operateForSomething() {
+
     Colors selected = Colors.Red;
-    switch (selected) {
+    switch(selected) {
       case Colors.Red:
         break;
       case Colors.Blue:
@@ -41,10 +44,9 @@ enum Colors {
         break;
     }
   }
-
   operateForSomething2() {
     Colors selected = Colors.Red;
-    switch (selected) {
+    switch(selected) {
       case Colors.Red:
         break;
       case Colors.Blue:
@@ -56,11 +58,10 @@ enum Colors {
     }
   }
 }
-
 void main() {
-  List<Colors> colors = Colors.values; //색상 열거형에 선언된 모든 상수
-  String redName = Colors.Red.name; //빨간색의 이름(선언된 이름을 문자열로)
-  int redIndex = Colors.Red.index; //빨간색이 선언된 순서(당연히 0부터 시작)
+  List<Colors> colors = Colors.values;//색상 열거형에 선언된 모든 상수
+  String redName = Colors.Red.name;//빨간색의 이름(선언된 이름을 문자열로)
+  int redIndex = Colors.Red.index;//빨간색이 선언된 순서(당연히 0부터 시작)
 
   // 주어진 열거형과 switch문을 활용한 상수 검사
   Colors selected = Colors.Red;
@@ -80,9 +81,10 @@ void main() {
   //      => 열거형 안에 메소드로 선언해서, 호출하도록 만들자!
   //         => 최종 문제 : 누락
   selected.operateForSomething();
-  print(colors.runtimeType);
-
 }
-/*
-  enumm -> t 스위치치문 조합의 실수를 줄이기 위해서 쉴드타입을 사용함
- */
+
+enum OperationState {
+  Before, // 출금 전, 운영 전, 시작 전
+  Ing, // 출금 중, 운영 중, 동작 중
+  After // 출금 후, 운영 후, 완료 후
+}

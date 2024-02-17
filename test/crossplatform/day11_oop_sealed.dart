@@ -18,31 +18,45 @@ abstract class Colors {
 
   // const factory로 클래스에 따라 객체 생성
   // = ColorsRed   => 생성자 위임(Delegation)
-  const factory Colors.red() = ColorsRed._;
+  factory Colors.red() => ColorsRed._();
   const factory Colors.green() = ColorsGreen._;
   const factory Colors.blue() = ColorsBlue._;
+  const factory Colors.orange() = ColorsOrange._;
 
   void operateForSomething();
 }
 
 class ColorsRed extends Colors {
   // 외부에서 직접 생성하는 행위 제한
-  const ColorsRed._(): super._();
+  ColorsRed._(): super._();
+
+  int f = 0;
 
   @override
   void operateForSomething() { /*처리*/ }
 }
+
 class ColorsGreen extends Colors {
   const ColorsGreen._(): super._();
 
   @override
   void operateForSomething() { /*처리*/ }
 }
+
 class ColorsBlue extends Colors {
   const ColorsBlue._(): super._();
 
   @override
   void operateForSomething() { /*처리*/ }
+}
+
+class ColorsOrange extends Colors {
+  const ColorsOrange._(): super._();
+
+  @override
+  void operateForSomething() {
+    // TODO: implement operateForSomething
+  }
 }
 
 void main() {

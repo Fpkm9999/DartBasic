@@ -33,9 +33,7 @@
  */
 
 class MyApple {
-  MyApple(MyAppleDecoration decoration) {
-
-  }
+  MyApple(MyAppleDecoration decoration) {}
 }
 class MyAppleDecoration {
   MyApple build() {

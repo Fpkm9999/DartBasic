@@ -42,6 +42,7 @@ class Building {
     // -값 반환 전 처리
     // 내부 멤버가 NULL이거나, 가져오기 직전에 처리
     // => 함수 호출 등을 할 수 있음
+
     result = _window ?? result;
     // -값 반환 직전 처리
     // 값 반환 전 가공 e.g. 다른 타입으로의 변환 등
@@ -70,7 +71,9 @@ class Building {
     // -값 변경 확인
     bool isChanged = newValue != this._window;
 
-    this._window = newValue;
+    if(isChanged) {
+      this._window = newValue;
+    }
     // -값 설정 후 처리
 
     // -값 변경이 되었을 때 콜백 처리
@@ -83,12 +86,14 @@ class Building {
   Observer? _observer;
   Observer? get observer => _observer;
   set observer(newValue) => _observer = newValue;
+
   void notify() {
     // 자기자신의 접근자 호출 => 가공된 최종 값을 받을 수 있음
     this._observer?.notify(window);
   }
 }
 
+// 옵저버 패턴
 class Observer {
   Observer({ required this.onNotify });
   final void Function(int value) onNotify;
@@ -118,8 +123,3 @@ void main() {
   // String get windowAsString 호출함
   String windowString = building.windowAsString;
 }
-
-/*
-todo 옵저버 패턴에 대해 배워라
-
- */

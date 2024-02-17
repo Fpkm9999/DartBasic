@@ -35,6 +35,7 @@ class Impl extends Abstract {
 
     var p = this.parentField;
   }
+
   // 부모에는 없는 메소드 => 상속받은 적 없음
   void child() { }
 }
@@ -55,4 +56,9 @@ void main() {
   bool isImpl = abstract.runtimeType == Impl;
 
   // impl 사용
+
+  abstract.method();
+  //abstract.child(); // 부모에는 선언되지 않아, 사용할 수 없음
+  impl?.method();
+  impl?.child();
 }
