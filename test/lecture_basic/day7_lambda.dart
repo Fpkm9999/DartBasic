@@ -118,7 +118,8 @@ void main() {
     /* return 값/변수; */ // 이 익명함수는 void므로 생략됨
   };
 
-  // todo 2024-02-18 여기서 부터 봐야함.
+
+  // 람다(익명 함수)와 고차 함수(higher-order functions)를 사용하는 방법
   // 호출식까지 동일
   fnByLambda?.call(20);
   fn(20);
@@ -135,7 +136,8 @@ void main() {
 
   // 람다 연습용
   lambdaPractice();
-}
+
+} //  main 함수 끝
 
 // 밑의 fn함수를 람다식으로 선언한 것 (여기서는 전역화된 것까지 동일)
 void Function(int p)? fnByLambda = (int p) {};
@@ -158,17 +160,21 @@ void caller(void Function(int p) notNull,
 
 void lambdaPractice() {
   // num 타입 : int 또는 double 타입 (num 타입을 상속 받은 타입)
+  // Dart가 실행 시점(runtime)에 변수에 할당된 값의 타입을 결정
   // 람다 기반 계산기
   num result = calculator(2, 2.0);
   print(result);
 }
 
-num calculator(num operand1, num operand2) {
-  final plus = (num operand1, num operand2) => operand1 + operand2;
+// calculator 함수는 람다(익명함수)와 고차 함수를 사용하여 간단한 사칙 연산 수행하는 계산기를 구현한 함수이다.
+num calculator(num operand1, num operand2) {  // num 타입의 calculator 라는 이름의 함수 정의 매개변수로 num 타입 변수 2개를 받음 // num 타입이라 실수, 정수 둘다 입력을 받을 수 있다.
+  final plus = (num operand1, num operand2) => operand1 + operand2; // 더하기 연산 람다
 
-  final num Function(num operand1, num operand2) minus = (operand1, operand2) {
-    return operand1 - operand2;
+  final num Function(num operand1, num operand2) minus = (operand1, operand2) { // 빼기 연산 람다
+    return operand1 - operand2; //  명시적으로 num Function(num, num) 타입을 가짐 <-- 빼도 무방함
   };
+  final minus2 = (num operand1, num operand2) => operand1 - operand2; // 이렇게 적어도 가능
+
   // 이렇게 하게 되면, dynamic Function(dynamic,dyanimc) 형식
   // final multiply = (operand1, operand2) =>
   num multiply(num operand1, num operand2) => operand1 * operand2;
@@ -176,13 +182,15 @@ num calculator(num operand1, num operand2) {
   final division = (num operand1, num operand2) {
     return operand1 / operand2;
   };
+  // 고차함수 호출(operator)
   return operator(
     operand1: operand1,
     operand2: operand2,
-    onOperate: plus, // "변수명/함수명에 on 문자열이 붙으면, callback 함수다" 라는 것을 의미(관례)
+    onOperate: plus, // "변수명/함수명에 on 문자열이 붙으면, callback 함수다" 라는 것을 의미(관례) // 실제로 수행할 연산을 결정하는 콜백 함수
   );
 }
 
+// 콜백 함수 예시
 num operator({
   required num operand1, // 입력1
   required num operand2, // 입력2
