@@ -38,7 +38,6 @@ import 'package:flutter/material.dart';
 
  */
 class Building {
-  // 생성자를 통해 초기화
   Building({required int window}) : _window = window;
 
   // 무조건 값을 주도록

@@ -33,19 +33,29 @@
  */
 
 class MyApple {
-  MyApple(MyAppleDecoration decoration) {}
+  // MyApple(MyAppleDecoration decoration) { }
+  MyApple(MyAppleDecoration decoration);
+  /*
+  네, Dart에서 생성자의 몸통({})이 없어도 됩니다. 생성자의 몸통이 없는 경우에는 해당 생성자가 수행할 작업이 없음을 나타냅니다.
+  이는 주로 필드를 초기화하는 단순한 작업이나 다른 생성자를 호출하는 데 사용됩니다.
+   */
 }
-class MyAppleDecoration {
-  MyApple build() {
-    return MyApple(this);
+class MyAppleDecoration { // MyAppleDecoration 클래스는 MyApple 객체를 생성하는 데 사용되는 팩토리 패턴
+  MyApple build() { // build() 메서드는 MyApple 객체를 생성하고 반환한다.
+    return MyApple(this); // this는 현재 인스턴스(MyAppleDecoration) 를 가르키는데
+    // MyApple() 생성자는 MyAppleDecoration 객체를 인자로 받아 MyApple 객체를 생성한다
   }
 }
 
 void main() {
   MyAppleDecoration decoration = MyAppleDecoration();
+  print(decoration.runtimeType); // MyAppleDecoration
   // 꾸미는 값
   // 의도한 형태
-  MyApple myApple1 = decoration.build();
+  MyApple myApple1 = decoration.build(); // MyApple
+  MyApple myApple3 = decoration.build();
+
+  print(myApple1.runtimeType);
 
   // 의도하지 않은 형태 : 직접 생성해버림
   MyApple myApple2 = MyApple(decoration);

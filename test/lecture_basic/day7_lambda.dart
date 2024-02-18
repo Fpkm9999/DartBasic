@@ -147,14 +147,13 @@ void fn(int p) {
   print("fn(int $p)");
 }
 
-void caller(void Function(int p) notNull,
-    [void Function(int p)? nullable = null]) {
+void caller(void Function(int p) notNull, [void Function(int p)? nullable = null]) {
   print("${nullable}");
   // 전달된 고차함수가 Nullable이 아닐 때 호출
   notNull(10);
   notNull.call(10);
   // 전달된 고차함수가 Nullable일 때 호출
-  //nullable?(10); // 이렇게는 사용 불가
+  //nullable?(10); // 이렇게는 사용 불가x
   nullable?.call(10);
 }
 
@@ -168,11 +167,11 @@ void lambdaPractice() {
 
 // calculator 함수는 람다(익명함수)와 고차 함수를 사용하여 간단한 사칙 연산 수행하는 계산기를 구현한 함수이다.
 num calculator(num operand1, num operand2) {  // num 타입의 calculator 라는 이름의 함수 정의 매개변수로 num 타입 변수 2개를 받음 // num 타입이라 실수, 정수 둘다 입력을 받을 수 있다.
-  final plus = (num operand1, num operand2) => operand1 + operand2; // 더하기 연산 람다
+  final  plus = (num operand1, num operand2) => operand1 + operand2; // 더하기 연산 람다
 
-  final num Function(num operand1, num operand2) minus = (operand1, operand2) { // 빼기 연산 람다
-    return operand1 - operand2; //  명시적으로 num Function(num, num) 타입을 가짐 <-- 빼도 무방함
-  };
+  final num Function(num, num) minus = (operand1, operand2) { // 빼기 연산 람다
+    return operand1 - operand2; //  명시적으로  타입을 가짐 <-- 빼도 무방함
+  };                        // todo
   final minus2 = (num operand1, num operand2) => operand1 - operand2; // 이렇게 적어도 가능
 
   // 이렇게 하게 되면, dynamic Function(dynamic,dyanimc) 형식
