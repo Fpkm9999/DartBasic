@@ -87,10 +87,10 @@ void main() {
   print(myObject); // 인스턴스 : Instance of 'MyClass'
   print(myObject.runtimeType); // 클래스명 : MyClass
   print(myObject.hashCode); // 객체의 해시값 : 466242970
-  print(myObject == MyClass()); // 객체가 새로 생성한 객체가 같은지 비교 : false
+  print(myObject == MyClass()); // 객체가 새로 생성한 객체와 같은지 비교 : false
   print(myObject == myObject); // 두 객체가 같은 객체인지 비교 : true => Class명, HashCode 값, 재정의할 때 비교선언한 것들로 비교
 
-  myObject = null; // 객체 제거
+  myObject = null; // 객체 제거 // heap 메모리에서 제거하는 것과 같다. 물론 언제 삭제 될지는 모른다.
   print(myObject); // 없는 인스턴스 : null
 
   print(myObject?.runtimeType); // 없는 인스턴스 : null
@@ -105,7 +105,7 @@ void main() {
   // *.dart 72:17  main
   // Failed to load "*.dart": Null check operator used on a null value
   // 널포인터 예외(NPE : Null Pointer Exception)
-  print(myObject!.runtimeType);
+  // print(myObject!.runtimeType);
 }
 
 // 관례적인 작성 순서 : 코드 규칙(Code Convension)
@@ -135,13 +135,20 @@ void strongSample() {
 }
 
 // 강한 참조 예시1 : 양쪽 강한 참조
-class A { C? c = null; }
-class C { A? a = null; }
+class A {
+  C? c = null;
+}
+class C {
+  A? a = null;
+}
+
 
 // 강한 참조 예시2 : 상속 강한 참조
 class Parent {
   Child? child;
-  void init() { child = Child(this); }
+  void init() {
+    child = Child(this);
+  }
 }
 class Child extends Parent {
   Child(Parent p) { this.p = p; }
@@ -149,6 +156,12 @@ class Child extends Parent {
 }
 
 // 강한 참조 예시3 : 순환식 강한 참조
-class CLS1 { CLS2? y = null; }
-class CLS2 { CLS3? z = null; }
-class CLS3 { CLS1? X = null; }
+class CLS1 {
+  CLS2? y = null;
+}
+class CLS2 {
+  CLS3? z = null;
+}
+class CLS3 {
+  CLS1? X = null;
+}
