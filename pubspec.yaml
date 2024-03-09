@@ -38,6 +38,9 @@ dependencies: # 의존성 : https://pub.dev
 
   # flutter_native_splash: ^2.3.13: https://pub.dev/packages/flutter_native_splash
   flutter_native_splash: ^2.3.13
+  leak_tracker: ^10.0.0
+  # leak_tracker: ^10.0.4 : https://pub.dev/packages/leak_tracker/
+  # leak_tracker: ^10.0.4
 
 dev_dependencies:
   flutter_test:
