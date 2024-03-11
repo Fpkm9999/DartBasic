@@ -1,91 +1,10 @@
-import 'package:dart_basic/01_basic_row.dart';
-import 'package:dart_basic/01_basic_stack.dart';
 import 'package:flutter/material.dart';
+
 import 'basic.dart';
 
 void main() {
-  runApp(const ExampleApp());
-}
-
-class ExampleApp extends StatelessWidget {
-  const ExampleApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter 1111',
-
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
-      // Widghets . material / Cupertino
-      home: sampleList(context: context),
-    );
-  }
-
-  Widget sampleList({
-    required BuildContext context,
-  }) {
-    // 아이템 당 높이 (Height Per Item) 게싼
-    final size = MediaQuery.of(context).size;
-    final heightPerItem = size.height * 0.5; // 30% 크기
-    // 상위 위젯 넣는 방법
-    // > 단일 자식을 갖는 상위 위젯일 경우
-    //    커서를 위젯 위에 놓고 Alt+Enter 를 누르면, IDE 제안이 켜짐
-    //    이 때, "Wrap with ~" 중에서 widget 을 선택
-    // > 다중 자식을 갖는 상위 위젯으로 감싸줄 경우 :
-    //    커서를 위젯 위에 놓고 Alt+Enter 를 누르면, IDE 제안이 켜짐
-    //    이 떄, "Wrap with ~" 중에서 Row나 COlumn 을 선택
-    //  > 감싸준 상위 위젯을 지우는 경우 :
-    //     커서를 위젯 위에 놓고 Alt + Enter 를 누르면, IDE 제안이 켜짐
-    //     이 때, "Remove this widget"을 선택
-    //     (단, children 형태 위젯일 경우 자식 위젯이 다중이라서 안됨)
-    return Container(
-      // Container 위젯 사용 시 "Replace with SizedBox" 뜨는 경우
-      // > width, height, child 만 속성 지정해서 사용하는 케이스라서
-      //   ide에서 SizedBox가 더 적합하다고 판단되었고 그것으로 변환하라는 이야기임
-      width: double.infinity,
-      height: double.infinity,
-      child: SingleChildScrollView(
-        child: Column(
-          // 속성이 Row랑 같음
-          // 주축(Main Axis) : 세로 방향 ( Row는 주축이 가로 방향)
-          // 부축(Cross Axis) : 가로 방향 ( Row는 부축이 세로 방향)
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: heightPerItem,
-              child: const ContainerPage(),
-            ),
-            const SizedBox(
-              width: double.infinity,
-              height: 100,
-              child: RowPage(),
-            ),
-            SizedBox(
-              width: double.infinity,
-              height: heightPerItem,
-              child: const RowPage(),
-            ),
-            // RowPage(),
-            SizedBox(
-              width: double.infinity,
-              height: heightPerItem,
-              child: StackPage(),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-// CustomApp 예제 //////////////////////////////////////////////////////////////
-
-// void main_backup() {
-//  모든 프로그램의 시작
-// runApp(const MyApp()); // MyApp()의 인스턴스를 시작
+  // 모든 프로그램의 시작
+  runApp(const MyApp()); // MyApp()의 인스턴스를 시작
 
 //   runApp(
 //     Container(
@@ -93,11 +12,8 @@ class ExampleApp extends StatelessWidget {
 //     )
 //   ); // 이렇게 하면 흰 화면만 나옴. 라우팅기능이나 여러가지 기본적인 기능도 없어 만들어줘야함. 기본앱이나 머터리얼등은 다 있음 <- widgets.app 위에 추가된것들임
 // }
-// }
+}
 
-// 기본 스켈레톤 코드 분석 ////////////////////////////////////////////////////////
-// 아래 코드
-// 스켈레톤 코드(skeleton Code) : 뼈대 코드 -> 기본 코드
 
 // 트리 :
 // => 위젯 트리 : 뷰를 그리기 전에 만들어 놓은 트리이다.
@@ -125,10 +41,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // Widghets . material / Cupertino
-      home: const RowPage(),
-      // const BasicPage(
-      //     title:
-      //     'Flutter Demo Home Page:999'), // 이건 셋다 있다. // 화면을 navigate 할 떄 최초로 뜨는 화면
+      home: const BasicPage(
+          title:
+              'Flutter Demo Home Page:999'), // 이건 셋다 있다. // 화면을 navigate 할 떄 최초로 뜨는 화면
       // home: 는 실행할때 가장 처음으로 뜰거를 여기서 설정
     );
   }
